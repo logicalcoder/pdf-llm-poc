@@ -15,7 +15,7 @@ loadData();
 app.use(express.json()); 
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello, TypeScript Express!');
+  res.send('Hello, This is a self hostes SLM used to generate very specific responses!');
 });
 
 app.use("/api/llm", llmRoutes);
