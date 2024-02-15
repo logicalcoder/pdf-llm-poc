@@ -1,5 +1,7 @@
 node_modules
 dist/
 data/
+nlp_data/
+complianceData/
 .env
 package-lock.json
