@@ -9,7 +9,7 @@ Splits it into chunks, create embeddings and saves the context to a InMemorty ve
 It was done using primarily **TypeScript**, **LangChain** and a *llama2* model pulled using **Ollama**. 
 
 ## ARCHITECTURE
-
+![](/public/Component_Diagram.png)
 
 ## INSTALLING AND RUNNING
 1. Make sure you have Ollama running locally. <br>
