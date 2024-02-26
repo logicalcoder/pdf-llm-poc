@@ -7,7 +7,7 @@ export function ChatMessageBubble(props: { message: ChatWindowMessage }) {
   const { role, content } = props.message;
 
   const colorClassName =
-    role === "human" ? "bg-sky-700" : "bg-slate-50 text-black";
+    role === "human" ? "bg-sky-600" : "bg-slate-50 text-black";
   const alignmentClassName =
     role === "human" ? "ml-auto" : "mr-auto";
 

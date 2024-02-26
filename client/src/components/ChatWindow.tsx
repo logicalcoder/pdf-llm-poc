@@ -109,7 +109,7 @@ export function ChatWindow(props: {
   );
 
   return (
-    <div className={`flex flex-col items-center p-4 md:p-8 rounded grow overflow-hidden border bg-black/70`}>
+    <div className={`flex flex-col items-center p-4 md:p-8 rounded grow overflow-hidden border bg-black/50`}>
       <h2 className={`text-2xl`}>{titleText}</h2>
       {chatInterfaceComponent}
       <ToastContainer/>
