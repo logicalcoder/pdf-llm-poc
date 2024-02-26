@@ -1,59 +1,37 @@
 # SLM (Small Language Model) POC
 
 ## DESCRIPTION
-Proof-of-concept to show what can be done with a simplistic model and some prompt engineering
+Proof-of-concept to show what can be done with a small language model and some prompt engineering. <br><br> This readme refers to the whole application and consists of 2 parts.<br>
+Namely both a server and client applications running each on their own ports. 
 
 ## BREAKDOWN ON HOW IT WORKS
+
+### SERVER
 It is a RAG (Retrieval Augmented Generation) SLM application that reads the content of all PDFs loaded in a central diretory.
 Splits it into chunks, create embeddings and saves the context to a InMemorty vector store. 
-It was done using primarily **TypeScript**, **LangChain** and a *llama2* model pulled using **Ollama**. 
+It was done using primarily **TypeScript**, **LangChain** and a *llama2* model pulled using **Ollama**. <br><br>
+Please refer to the server [README](/server/README.md) for more detailed information.
 
-## ARCHITECTURE
-![](/public/Component_Diagram.png)
+### CLIENT
+It is a basic web application build **NextJS**, making API requests to the server allowing the user to query the local language model. <br><br>
+Please refer to the client [README](/client/README.md) for more detailed information.
 
-### 1. SOURCE
-This refers to the raw files that needs to be loaded as the references to what the questions need to be validated against. <br>
-At the moment it is set to only look at PDFs.
+## INSTALLING
+You will need to install node packages in both the server and client directories.
 
-### 2. LOAD
-Load data from the PDF documents within the directory or any location as specified.
-
-### 3. SPLIT / TRANSFORM
-A key part of retrieval is fetching only the relevant parts of documents. <br>
-One of the primary transformation steps is splitting (or chunking) a large document into smaller chunks. <br>
-
-### 4. EMBEDDING
-Embeddings capture the semantic meaning of text, allowing you to quickly and efficiently find other pieces of text that are similar.
-
-### 5. STORE
-With the rise of embeddings, there has emerged a need for databases to support efficient storage and searching of these embeddings. <br>
-This require a vectorstore where the embedding information can be stored, for this project a InMemory store is being used. <br>
-
-### 6. RETRIEVAL
-Once the data is in the database, you still need to retrieve it. <br>
-The retriever is then used within the prompting call to know where and how the relevant information needs to be retrieved.
-
-### 7. QUESTION / PROMT
-Using the retriever multiple prompts can now be made to query the base data. <br>
-A template is used to combine a System Prompt and the User Prompt. <br>
-The System Prompt is used to guide the model to only respond in a very specific manner.
-
-## INSTALLING AND RUNNING
-1. Make sure you have Ollama running locally. <br>
-You can download it from https://ollama.com/ and pull the llama2 model.
-
-2. Add a directory call `data/` and add the source PDFs in it. <br>
-This will be used as the base on which the model will run to retrieve the specific information.
-
-3. Make a copy of the `.env_base` file and rename it to `.env` <br>
-The PORT number is retreived from here where the application will run on. 
-
-4. Run the following within the root folder to install all the dependancy packages
+1. Firstly run the following command in the root directory and not in the 'server' or 'client' sub-directories. This will install only the **concurrently** package which will be used to simultaneously install and run both app. 
 ```bash
 $ npm install
 ```
 
-5. Once successfully completed, run the following to start the application and prep the data
+2. Once successfully completed, run the following to install the dependancy packages for both apps.<br> 
+Make sure to add **run** within the command or else it will look at the root package.json file which is wrong.
+```bash
+$ npm run install
+```
+
+## STARTING BOTH APPS
+1. When both applications dependancies have completed their installations you will be able to run both using the following command:
 ```bash
 $ npm start
 ```
